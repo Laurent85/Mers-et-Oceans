@@ -1,0 +1,310 @@
+﻿<Window x:Class="MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Mers et Océans" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" HorizontalAlignment="Center" VerticalAlignment="Center" Icon="Resources/Icone_Mers.ico">
+    <Window.Resources>
+        <Storyboard x:Key="Label_points">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Points">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFE8FF00"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFF4600"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFE8FF00"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="vérifier">
+            <BeginStoryboard Storyboard="{StaticResource Label_points}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
+    </Window.Triggers>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+    <Grid x:Name="Grid_carte" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Height="531" Width="915">
+
+        <ScrollViewer x:Name="MyScrollViewer" CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="-28,0,-32,0">
+
+            <Grid x:Name="Grid_transform" Height="532" Width="972" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding Value, ElementName=ZoomSlider}" ScaleY="{Binding Value, ElementName=ZoomSlider}"  />
+                    </TransformGroup>
+                </Grid.LayoutTransform>
+
+                <Image x:Name="Image_carte" Source="/Resources/Carte du monde.png" RenderTransformOrigin="0.5,0.5" ScrollViewer.HorizontalScrollBarVisibility="Visible" IsEnabled="False" Grid.IsSharedSizeScope="True" Height="516" Width="958" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,8,9,8"/>
+
+                <Grid x:Name="Cercles" Margin="0,0,19,26" HorizontalAlignment="Center" VerticalAlignment="Center" Width="953" Height="506">
+                    <Ellipse x:Name="e01" Fill="#FF0074FF" HorizontalAlignment="Left" Height="20" Margin="44,224,0,0" VerticalAlignment="Top" Width="20"/>
+                    <Ellipse x:Name="e02" Fill="#FF0074FF" HorizontalAlignment="Left" Height="20" Margin="325,136,0,0" VerticalAlignment="Top" Width="20"/>
+                    <Ellipse x:Name="e03" Fill="#FF0074FF" HorizontalAlignment="Left" Height="20" Margin="669,338,0,0" VerticalAlignment="Top" Width="20"/>
+                    <Ellipse x:Name="e04" Fill="#FF0074FF" HorizontalAlignment="Left" Height="20" Margin="569,486,0,0" VerticalAlignment="Top" Width="20"/>
+                    <Ellipse x:Name="e05" Fill="#FF0074FF" HorizontalAlignment="Left" Height="20" Margin="427,11,0,0" VerticalAlignment="Top" Width="20"/>
+                    <Ellipse x:Name="e06" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="615,235,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e07" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="779,230,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e08" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="200,185,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e09" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="441,148,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e10" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="906,418,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e11" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="700,233,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e12" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="886,81,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e13" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="830,241,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e14" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="177,238,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e15" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="819,92,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e16" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="136,199,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e17" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="520,33,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e18" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="803,192,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e19" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="207,81,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e20" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="325,6,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e21" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="417,67,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e22" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="814,148,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e23" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="787,28,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e24" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="293,480,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e25" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="587,28,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e26" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="787,153,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e27" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="725,260,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e28" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="906,318,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e29" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="851,324,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e30" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="819,309,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e31" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="686,20,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e32" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="826,330,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e33" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="877,40,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e34" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="435,92,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e35" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="539,210,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e36" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="123,40,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e37" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="478,89,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e38" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="515,134,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e39" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="793,172,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e40" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="571,140,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e41" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="801,262,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e42" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="745,259,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e43" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="768,307,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e44" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="808,278,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e45" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="497,153,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e46" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="253,116,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e47" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="584,198,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e48" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="413,128,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e49" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="468,136,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e50" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="81,193,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e51" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="757,222,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e52" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="478,69,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e53" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="412,100,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e54" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="515,59,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e55" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="833,290,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e56" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="417,112,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e57" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="525,294,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e58" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="793,318,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e59" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="891,303,0,0" VerticalAlignment="Top" Width="14"/>
+                    <Ellipse x:Name="e60" Fill="#FF0074FF" HorizontalAlignment="Left" Height="14" Margin="530,126,0,0" VerticalAlignment="Top" Width="14"/>
+
+                </Grid>
+
+                <Grid x:Name="Cibles" Margin="6,8,13,18" HorizontalAlignment="Center" VerticalAlignment="Center" Width="953" Height="506">
+                    <Label x:Name="Océan_Pacifique" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="38,215,895,271" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Océan_Atlantique" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="319,127,614,359" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Océan_Indien" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="663,330,270,156" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Océan_Austral" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="563,478,370,8" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Océan_Arctique" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="421,2,512,484" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Arabie" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="606,223,327,263" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Chine_méridionale" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="770,218,163,268" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Sargasses" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="191,174,742,312" HorizontalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" VerticalAlignment="Center" Width="20"/>
+                    <Label x:Name="Mer_Méditerranée" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="432,136,501,350" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Tasman" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="897,407,36,79" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Golfe_Bengale" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="691,221,242,265" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Bering" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="877,70,56,416" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Philippines" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="821,229,112,257" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Caraïbes" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="168,227,765,259" HorizontalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" VerticalAlignment="Center" Width="20"/>
+                    <Label x:Name="Mer_Okhotsk" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="810,81,123,405" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Golfe_Mexique" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="127,188,806,298" HorizontalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" VerticalAlignment="Center" Width="20"/>
+                    <Label x:Name="Mer_Barents" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="511,22,422,464" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Chine_orientale" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="794,180,139,306" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Baie_Hudson" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="198,70,735,416" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Mer_Groenland" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="316,-5,617,491" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Mer_Norvège" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="408,56,525,430" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Japon" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="805,136,128,350" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Sibérie_orientale" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="778,16,155,470" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Scotia" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="284,468,649,18" HorizontalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" VerticalAlignment="Center" Width="20"/>
+                    <Label x:Name="Mer_Kara" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="578,16,355,470" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Bohai" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="778,142,155,344" FontSize="8" Background="{x:Null}" Width="20" Height="20" RenderTransformOrigin="-0.5,1.3"/>
+                    <Label x:Name="Mer_Andaman" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="716,248,217,238" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Salomon" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="897,306,36,180" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Arafura" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="842,312,91,174" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Banda" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="810,298,123,188" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Laptev" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="677,8,256,478" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Timor" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="817,318,116,168" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Tchouktches" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="868,28,65,458" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Nord" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="426,81,507,405" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Rouge" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="530,198,403,288" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Beaufort" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="114,28,819,458" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Mer_Baltique" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="469,78,464,408" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Mer_Noire" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="506,122,427,364" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Jaune" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="784,160,149,326" FontSize="8" Background="{x:Null}" Width="20" Height="20" RenderTransformOrigin="-0.5,1.3"/>
+                    <Label x:Name="Mer_Caspienne" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="562,128,371,358" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Sulu" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="792,251,141,235" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Golfe_Thaïlande" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="736,248,197,238" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Java" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="759,296,174,190" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Célèbes" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="799,266,134,220" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Mer_Egée" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="488,141,445,345" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Golfe_Saint_Laurent" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="244,105,689,381" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Golfe_Persique" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="575,186,358,300" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Golfe_Gascogne" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="404,116,529,370" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Adriatique" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="459,124,474,362" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Golfe_Californie" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="72,181,861,305" HorizontalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" VerticalAlignment="Center" Width="20"/>
+                    <Label x:Name="Golfe_Tonkin" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="748,210,185,276" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Golfe_Botnie" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="469,58,464,428" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Mer_Irlande" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="403,88,530,398" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Mer_Blanche" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="506,47,427,439" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Halmahera" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="824,278,109,208" FontSize="8" Background="{x:Null}" Width="20" Height="20" />
+                    <Label x:Name="Manche" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="408,100,525,386" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                    <Label x:Name="Lac_Victoria" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="516,282,417,204" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Bali" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="784,306,149,180" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Bismarck" Content="?"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="882,292,51,194" FontSize="8" Background="{x:Null}" Width="20" Height="20"/>
+                    <Label x:Name="Mer_Azov" Content="?" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Yellow" FontWeight="Bold" Margin="521,114,412,372" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="8" Background="{x:Null}" Height="20" Width="20"/>
+                </Grid>
+            </Grid>
+
+        </ScrollViewer>
+        <Slider x:Name="ZoomSlider" Orientation="Horizontal" Minimum="0.0" Maximum="8.0" LargeChange="0.25" SmallChange="0.01"  Value="1.0" Margin="0,-37,24,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="0.5,0.5" Foreground="#FFA84242" />
+        <RadioButton x:Name="Europe" Content="Europe" HorizontalAlignment="Left" Margin="148,-85,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Afrique" Content="Afrique" HorizontalAlignment="Left" Margin="257,-85,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Carte" Content="Carte entière" HorizontalAlignment="Left" Margin="21,-85,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Amerique_Nord" Content="Amérique du Nord" HorizontalAlignment="Left" Margin="346,-85,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Océanie" Content="Océanie" HorizontalAlignment="Left" Margin="491,-85,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Asie" Content="Asie" HorizontalAlignment="Left" Margin="590,-85,0,0" VerticalAlignment="Top"/>
+        
+        <Grid x:Name="Sources" HorizontalAlignment="Left" Height="578" Margin="-199,-47,-223,0" VerticalAlignment="Top" Width="1337">
+            <Label x:Name="Océan_Pacifique1" Content="Océan Pacifique" Margin="10,20,10,484" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Width="114"/>
+            <Label x:Name="Océan_Atlantique1" Content="Océan Atlantique" Margin="10,38,10,466" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Width="114"/>
+            <Label x:Name="Océan_Indien1" Content="Océan Indien" Margin="10,56,10,448" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Océan_Austral1" Content="Océan Austral" Margin="10,74,0,431" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Océan_Arctique1" Content="Océan Arctique" Margin="10,92,23,412" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Arabie1" Content="Mer d'Arabie" Margin="10,110,10,394" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Chine1" Content="Mer de Chine méridionale" Margin="10,152,0,400" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Width="158" Height="26"/>
+            <Label x:Name="Mer_Sargasses1" Content="Mer des Sargasses" Margin="10,146,10,358" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Méditerranée1" Content="Mer Méditerrannée" Margin="10,164,0,340" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Width="124"/>
+            <Label x:Name="Mer_Tasman1" Content="Mer de Tasman" Margin="10,182,23,322" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Bengale1" Content="Golfe du Bengale" Margin="10,224,0,328" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Bering1" Content="Mer de Bering" Margin="10,242,0,310" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Philippines1" Content="Mer des Philippines" Margin="10,260,0,292" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Caraïbes1" Content="Mer des Caraïbes" Margin="10,278,0,274" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Okhotsk1" Content="Mer d'Okhotsk" Margin="11,296,0,256" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Mexique1" Content="Golfe du Mexique" Margin="11,314,0,238" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Barents1" Content="Mer de Barents" Margin="11,332,0,220" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Chine_orientale1" Content="Mer de Chine orientale" Margin="11,350,0,202" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Baie_Hudson1" Content="Baie d'Hudson" Margin="10,368,0,184" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Groenland1" Content="Mer du Groenland" Margin="10,386,0,166" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Norvège1" Content="Mer de Norvège" Margin="10,404,0,148" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Japon1" Content="Mer du Japon" Margin="10,422,0,130" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Sibérie_orientale1" Content="Mer de Sibérie orientale" Margin="10,440,0,112" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Scotia1" Content="Mer de la Scotia" Margin="10,458,0,94" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Kara1" Content="Mer de Kara" Margin="10,476,0,76" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Bohai1" Content="Mer de Bohai" Margin="10,494,0,58" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Andaman1" Content="Mer d'Andaman" Margin="10,512,0,40" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Salomon1" Content="Mer des Salomon" Margin="10,530,0,22" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Arafura1" Content="Mer d'Arafura" Margin="10,548,0,4" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Banda1" Content="Mer de Banda" Margin="10,566,0,-14" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Laptev1" Content="Mer des Laptev" Margin="1177,44,0,508" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Timor1" Content="Mer de Timor" Margin="1177,62,0,490" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Tchouktches1" Content="Mer des Tchouktches" Margin="1177,80,0,472" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Nord1" Content="Mer du Nord" Margin="1177,98,0,454" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Rouge1" Content="Mer Rouge" Margin="1177,116,0,436" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Beaufort1" Content="Mer de Beaufort" Margin="1177,134,0,418" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Baltique1" Content="Mer Baltique" Margin="1177,152,0,400" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Noire1" Content="Mer Noire" Margin="1177,170,0,382" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Jaune1" Content="Mer Jaune" Margin="1177,188,0,364" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Caspienne1" Content="Mer Caspienne" Margin="1177,206,0,346" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Sulu1" Content="Mer de Sulu" Margin="1177,224,0,328" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Thaïlande1" Content="Golfe de Thaïlande" Margin="1177,242,0,310" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Java1" Content="Mer de Java" Margin="1177,260,0,292" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Célèbes1" Content="Mer de Célèbes" Margin="1177,278,0,274" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Egée1" Content="Mer Egée" Margin="1177,296,0,256" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Saint_Laurent1" Content="Golfe du Saint-Laurent" Margin="1177,314,0,238" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Persique1" Content="Golfe Persique" Margin="1177,332,0,220" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Gascogne1" Content="Golfe de Gascogne" Margin="1177,350,0,202" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Adriatique1" Content="Mer Adriatique" Margin="1177,368,0,184" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Californie1" Content="Golfe de Californie" Margin="1177,386,0,166" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Tonkin1" Content="Golfe du Tonkin" Margin="1177,404,0,148" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Golfe_Botnie1" Content="Golfe de Botnie" Margin="1177,422,0,130" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Irlande1" Content="Mer d'Irlande" Margin="1177,440,0,112" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Blanche1" Content="Mer Blanche" Margin="1177,458,0,94" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Halmahera1" Content="Mer d'Halmahera" Margin="1177,476,0,76" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Manche1" Content="Manche" Margin="1177,494,0,58" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Lac_Victoria1" Content="Lac Victoria" Margin="1177,512,0,40" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Bali1" Content="Mer de Bali" Margin="1177,530,0,22" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Bismarck1" Content="Mer de Bismarck" Margin="1177,548,0,4" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+            <Label x:Name="Mer_Azov1" Content="Mer d'Azov" Margin="1177,566,0,-14" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
+
+        <Grid x:Name="Numéros" Margin="-216,-23,-223,-22" HorizontalAlignment="Center" VerticalAlignment="Center" Height="576" Width="1354">
+            <Label x:Name="Num_Pacifique" Content="01" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,20,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Atlantique" Content="02" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,38,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Indien" Content="03" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,56,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Austral" Content="04" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,74,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Arctique" Content="05" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,92,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Biélorussie" Content="06" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,110,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Bosnie_Herzégovine" Content="07" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,128,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Bulgarie" Content="08" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,146,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Chypre" Content="09" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,164,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Croatie" Content="10" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,182,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Danemark" Content="11" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,200,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Espagne" Content="12" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,218,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Estonie" Content="13" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,236,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Finlande" Content="14" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,254,0,0" Foreground="Red"/>
+            <Label x:Name="Num_France" Content="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,272,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Grêce" Content="16" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,290,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Hongrie" Content="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,308,0,0" Foreground="Red"/>
+            <Label x:Name="Num_iles_Feroe" Content="18" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,326,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Irlande" Content="19" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,344,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Islande" Content="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,362,0,0"  Foreground="Red"/>
+            <Label x:Name="Num_Italie" Content="21" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,380,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Jersey_Guernesey" Content="22" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,398,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Kosovo" Content="23" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,416,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Lettonie" Content="24" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,434,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Liechtenstein" Content="25" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,452,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Lituanie" Content="26" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,470,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Luxembourg" Content="27" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,488,0,0" Foreground="Red" />
+            <Label x:Name="Num_Macédoine" Content="28" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,506,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Malte" Content="29" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,524,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Moldavie" Content="30" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="5,542,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Monaco" Content="31" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,20,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Monténégro" Content="32" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,38,0,0" Foreground="Red" />
+            <Label x:Name="Num_Norvège" Content="33" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,56,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Pays_bas" Content="34" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,74,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Pologne" Content="35" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,92,0,0" Foreground="Red"/>
+            <Label x:Name="Num_Portugal" Content="36" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,110,0,0" Foreground="Red"/>
+            <Label x:Name="Num_République_Tchèque" Content="37" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,128,0,0" Foreground="Red" />
+            <Label x:Name="Num_Roumanie" Content="38" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,146,0,0"  Foreground="Red"/>
+            <Label x:Name="Num_Royaume_Uni" Content="39" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,164,0,0" Foreground="Red" />
+            <Label x:Name="Num_Russie" Content="40" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,182,0,0" Foreground="Red" />
+            <Label x:Name="Num_Saint_Marin" Content="41" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,200,0,0" Foreground="Red" />
+            <Label x:Name="Num_Serbie" Content="42" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,218,0,0" Foreground="Red" />
+            <Label x:Name="Num_Slovaquie" Content="43" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,236,0,0" Foreground="Red" />
+            <Label x:Name="Num_Slovénie" Content="44" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,254,0,0" Foreground="Red" />
+            <Label x:Name="Num_Suède" Content="45" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,272,0,0" Foreground="Red" />
+            <Label x:Name="Num_Suisse" Content="46" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,290,0,0" Foreground="Red" />
+            <Label x:Name="Num_Ukraine" Content="47" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,308,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican" Content="48" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,326,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy" Content="49" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,344,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy1" Content="50" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,362,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy2" Content="51" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,380,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy3" Content="52" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,398,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy4" Content="53" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,416,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy5" Content="54" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,434,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy6" Content="55" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,452,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy7" Content="56" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,470,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy8" Content="57" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,488,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy9" Content="58" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,506,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy10" Content="59" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,524,0,0" Foreground="Red" />
+            <Label x:Name="Num_Vatican_Copy11" Content="60" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="1170,542,0,0" Foreground="Red" />
+        </Grid>
+        <Button x:Name="vérifier" Content="Vérifier" HorizontalAlignment="Left" Margin="978,-85,-138,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Points" HorizontalAlignment="Left" Margin="148,536,0,-36" VerticalAlignment="Top" Width="64" Foreground="#FF00AEFF" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.537,-0.226" Height="31" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="Bien" Content="" HorizontalAlignment="Left" Margin="350,539,0,-36" VerticalAlignment="Top" Width="178" Height="28"/>
+        <Label x:Name="Mal" Content="" HorizontalAlignment="Left" Margin="350,579,0,-74" VerticalAlignment="Top" Width="179" Height="26"/>
+        <Label x:Name="Absent" Content="" HorizontalAlignment="Left" Margin="555,539,0,-35" VerticalAlignment="Top" Width="179" Height="27"/>
+        <Label x:Name="Points" Content="" HorizontalAlignment="Left" Margin="148,563,0,-75" VerticalAlignment="Top" Width="64" BorderBrush="#FFADB2B4" Background="#FFE8FF00" FontSize="18" FontWeight="Bold" BorderThickness="5" Height="43" Foreground="#FF89058F"/>
+        <Label x:Name="Coups" Content="" HorizontalAlignment="Left" Margin="978,-58,-138,0" VerticalAlignment="Top" Width="75" Foreground="#FF6A1212"/>
+        <Label x:Name="Bienvenue_Copy" x:FieldModifier="public" Content="Bonne chance" HorizontalAlignment="Left" Margin="-199,-92,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#FF0808A0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="En_cours" Content="" HorizontalAlignment="Left" Margin="555,577,0,-74" VerticalAlignment="Top" Width="179" Height="28"/>
+        <Label x:Name="copie" Content="Label" HorizontalAlignment="Left" Margin="491,19,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Button x:Name="Effacer" Content="Tout effacer" HorizontalAlignment="Left" Margin="978,583,-138,-74" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Solutions" Content="Solutions" HorizontalAlignment="Left" Margin="872,584,-32,-75" VerticalAlignment="Top" Width="75"/>
+            </Grid>
+</ScrollViewer>
+</Window>
