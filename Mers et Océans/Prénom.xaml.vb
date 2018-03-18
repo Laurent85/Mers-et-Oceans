@@ -11,7 +11,7 @@
             mainwindow.Bienvenue_Copy.Content = "Bonne chance " & Chr(10) & prenom.Text & " !"
             mainwindow.copie.Content = prenom.Text
             mainwindow.Show()
-            Me.Close()
+            Close()
         Else
             prenom.Focus()
             prenom.TextAlignment = TextAlignment.Center
@@ -20,7 +20,7 @@
     End Sub
 
     Private Sub prenom_TextChanged(sender As Object, e As TextChangedEventArgs) Handles prenom.TextChanged
-        prenom.HorizontalContentAlignment = Windows.HorizontalAlignment.Center
-        prenom.VerticalContentAlignment = Windows.VerticalAlignment.Center
+        prenom.HorizontalContentAlignment = HorizontalAlignment.Center
+        prenom.VerticalContentAlignment = VerticalAlignment.Center
     End Sub
 End Class

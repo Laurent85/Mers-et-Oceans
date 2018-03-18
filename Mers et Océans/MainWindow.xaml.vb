@@ -2,11 +2,11 @@
 
 Class MainWindow
 
-    Public temp As Integer
-    Public score As Integer
-    Public coups1 As Integer
-    Public p As Integer = 0
-    Public triche As Integer = 0
+    Public Temp As Integer
+    Public Score As Integer
+    Public Coups1 As Integer
+    Public P As Integer = 0
+    Public Triche As Integer = 0
 
     Sub active_drag(ByVal cib As Label)
         AddHandler cib.DragEnter, AddressOf lbl_Dragenter
@@ -29,7 +29,6 @@ Class MainWindow
 
         For i As Int32 = 0 To Cibles.Children.Count - 1
             Dim cible As Label = CType(Cibles.Children.Item(i), Label)
-            Dim cercle As Ellipse = CType(Cercles.Children.Item(i), Ellipse)
             active_drag(cible)
             AddHandler cible.MouseRightButtonDown, AddressOf lbl_clear
             cible.AllowDrop = True
@@ -46,8 +45,8 @@ Class MainWindow
 
         Bilan_des_placements()
         Points.Foreground = Brushes.SaddleBrown
-        Points.HorizontalContentAlignment = Windows.HorizontalAlignment.Center
-        Points.VerticalContentAlignment = Windows.VerticalAlignment.Top
+        Points.HorizontalContentAlignment = HorizontalAlignment.Center
+        Points.VerticalContentAlignment = VerticalAlignment.Top
         Points.Content = score
         Coups.Content = "Coups : " & coups1
         Carte.IsChecked = True
@@ -74,12 +73,11 @@ Class MainWindow
 
         For j = 0 To Cibles.Children.Count - 1
             Dim cible As Label = CType(Cibles.Children.Item(j), Label)
-            Dim source As Label = CType(Sources.Children.Item(j), Label)
             Dim cercle As Ellipse = CType(Cercles.Children.Item(j), Ellipse)
-            Dim couleur_gris As New SolidColorBrush()
-            couleur_gris.Color = Color.FromArgb(255, 137, 140, 143)
-            Dim couleur_bleu As New SolidColorBrush()
-            couleur_bleu.Color = Color.FromArgb(255, 0, 116, 255)
+            Dim couleurGris As New SolidColorBrush()
+            couleurGris.Color = Color.FromArgb(255, 137, 140, 143)
+            Dim couleurBleu As New SolidColorBrush()
+            couleurBleu.Color = Color.FromArgb(255, 0, 116, 255)
             'Cherche si existe déjà
             'Si cible = source et source différent de "?" alors..
             If cible.Content = e.Data.GetData(DataFormats.Text) And e.Data.GetData(DataFormats.Text) <> "?" Then
@@ -88,25 +86,24 @@ Class MainWindow
                 cible.Foreground = Brushes.White
                 CType(sender, Label).Content = e.Data.GetData(DataFormats.Text)
                 CType(sender, Label).Foreground = Brushes.White
-                cercle.Fill = couleur_gris
+                cercle.Fill = couleurGris
             Else
                 CType(sender, Label).Content = e.Data.GetData(DataFormats.Text)
                 CType(sender, Label).Foreground = Brushes.White
             End If
             If cible.Content = "?" Then
-                cercle.Fill = couleur_bleu
+                cercle.Fill = couleurBleu
             End If
             If cible.Content <> "?" And Not Equals(cercle.Fill, Brushes.LawnGreen) And Not Equals(cercle.Fill, Brushes.Red) Then
-                cercle.Fill = couleur_gris
+                cercle.Fill = couleurGris
             End If
         Next j
 
         'Numéros gris et infobulle pour les départements placés
         For i As Int32 = 0 To Cibles.Children.Count - 1
             Dim numero As Label = CType(Numéros.Children.Item(i), Label)
-            Dim cercle As Ellipse = CType(Cercles.Children.Item(i), Ellipse)
-            Dim couleur_gris As New SolidColorBrush()
-            couleur_gris.Color = Color.FromArgb(255, 137, 140, 143)
+            Dim couleurGris As New SolidColorBrush()
+            couleurGris.Color = Color.FromArgb(255, 137, 140, 143)
             For j As Int32 = 0 To Cibles.Children.Count - 1
                 Dim cible As Label = CType(Cibles.Children.Item(j), Label)
                 If cible.Content = numero.Content Then
@@ -147,7 +144,7 @@ Class MainWindow
 
     End Sub
 
-    Sub zoom()
+    Sub Zoom()
 
         If Europe.IsChecked = True Then
             ZoomSlider.Value = 4
@@ -210,8 +207,8 @@ Class MainWindow
 
         'effacement par clic-droit
         CType(sender, Label).AllowDrop = True
-        Dim couleur_bleu As New SolidColorBrush()
-        couleur_bleu.Color = Color.FromArgb(255, 0, 116, 255)
+        Dim couleurBleu As New SolidColorBrush()
+        couleurBleu.Color = Color.FromArgb(255, 0, 116, 255)
 
         Dim b As Integer = 0
         Dim m As Integer = -1
@@ -251,8 +248,6 @@ Class MainWindow
 
         For i As Int32 = 0 To Numéros.Children.Count - 1
             Dim source As Label = CType(Numéros.Children.Item(i), Label)
-            Dim cercle As Ellipse = CType(Cercles.Children.Item(i), Ellipse)
-            Dim cible As Label = CType(Cibles.Children.Item(i), Label)
             If CType(sender, Label).Content = source.Content Then
                 source.Foreground = Brushes.Red
                 AddHandler source.MouseDown, AddressOf lbl_MouseDown 'activation du glissé
@@ -264,11 +259,10 @@ Class MainWindow
         CType(sender, Label).ToolTip = vbNullString
 
         For i As Int32 = 0 To Numéros.Children.Count - 1
-            Dim source As Label = CType(Numéros.Children.Item(i), Label)
             Dim cercle As Ellipse = CType(Cercles.Children.Item(i), Ellipse)
             Dim cible As Label = CType(Cibles.Children.Item(i), Label)
             If cible.Content = "?" Then
-                cercle.Fill = couleur_bleu
+                cercle.Fill = couleurBleu
             End If
         Next i
 
@@ -324,10 +318,10 @@ Class MainWindow
                 Bien.Content = "Eléments bien placés : " & b.ToString
             End If
             If cible.Content = "?" Then
-                Dim couleur_bleu As New SolidColorBrush()
-                couleur_bleu.Color = Color.FromArgb(255, 0, 116, 255)
+                Dim couleurBleu As New SolidColorBrush()
+                couleurBleu.Color = Color.FromArgb(255, 0, 116, 255)
                 cible.Foreground = Brushes.White
-                cercle.Fill = couleur_bleu
+                cercle.Fill = couleurBleu
                 n = n + 1
                 Absent.Foreground = Brushes.Blue
                 Absent.Content = "Eléments non placés : " & n.ToString
@@ -354,8 +348,8 @@ Class MainWindow
         Coups.Content = "Coups : " & coups1
 
         Points.Foreground = Brushes.SaddleBrown
-        Points.HorizontalContentAlignment = Windows.HorizontalAlignment.Center
-        Points.VerticalContentAlignment = Windows.VerticalAlignment.Top
+        Points.HorizontalContentAlignment = HorizontalAlignment.Center
+        Points.VerticalContentAlignment = VerticalAlignment.Top
         Points.Content = score
         'My.Computer.Audio.Play(My.Resources.Bruit, AudioPlayMode.Background)
 
@@ -373,7 +367,7 @@ Class MainWindow
                 Effacer_Click(sender, e)
             Else
                 fichier_Scores()
-                Me.Close()
+                Close()
             End If
         End If
     End Sub
@@ -391,18 +385,18 @@ Class MainWindow
     Sub fichier_Scores()
         If triche = 0 Then
             Try
-                Dim FichierScores As StreamWriter = New StreamWriter("\\laurent\d\Mers_Oceans.txt", True)
-                FichierScores.WriteLine(Now & Chr(9) & copie.Content & Chr(9) & "Points : " & Points.Content & Chr(9) & Coups.Content & Chr(9) & Bien.Content & Chr(9) & Mal.Content & Chr(9) & Absent.Content)
-                FichierScores.Close()
+                Dim fichierScores As StreamWriter = New StreamWriter("\\laurent\d\Mers_Oceans.txt", True)
+                fichierScores.WriteLine(Now & Chr(9) & copie.Content & Chr(9) & "Points : " & Points.Content & Chr(9) & Coups.Content & Chr(9) & Bien.Content & Chr(9) & Mal.Content & Chr(9) & Absent.Content)
+                fichierScores.Close()
 
             Catch ex As Exception
 
             End Try
 
             Try
-                Dim FichierScores1 As StreamWriter = New StreamWriter("c:\Mers_Oceans.txt", True)
-                FichierScores1.WriteLine(Now & Chr(9) & copie.Content & Chr(9) & "Points : " & Points.Content & Chr(9) & Coups.Content & Chr(9) & Bien.Content & Chr(9) & Mal.Content & Chr(9) & Absent.Content)
-                FichierScores1.Close()
+                Dim fichierScores1 As StreamWriter = New StreamWriter("c:\Mers_Oceans.txt", True)
+                fichierScores1.WriteLine(Now & Chr(9) & copie.Content & Chr(9) & "Points : " & Points.Content & Chr(9) & Coups.Content & Chr(9) & Bien.Content & Chr(9) & Mal.Content & Chr(9) & Absent.Content)
+                fichierScores1.Close()
             Catch ex As Exception
 
             End Try
@@ -454,7 +448,7 @@ Class MainWindow
         Next i
 
         For i As Integer = 0 To Cibles.Children.Count - 1
-            Dim cible As Label = Me.Cibles.Children.Item(i)
+            Dim cible As Label = Cibles.Children.Item(i)
             If cible IsNot Nothing Then
                 cible.AllowDrop = False
             End If
@@ -472,15 +466,15 @@ Class MainWindow
             Dim source As Label = CType(Sources.Children.Item(i), Label)
             Dim numéro As Label = CType(Numéros.Children.Item(i), Label)
             Dim cercle As Ellipse = CType(Cercles.Children.Item(i), Ellipse)
-            Dim couleur_bleu As New SolidColorBrush()
-            couleur_bleu.Color = Color.FromArgb(255, 0, 116, 255)
+            Dim couleurBleu As New SolidColorBrush()
+            couleurBleu.Color = Color.FromArgb(255, 0, 116, 255)
             cible.Content = "?"
             cible.AllowDrop = True
             cible.Foreground = Brushes.White
             cible.ToolTip = vbNullString
             source.Foreground = Brushes.Black
             numéro.Foreground = Brushes.Red
-            cercle.Fill = couleur_bleu
+            cercle.Fill = couleurBleu
             AddHandler source.MouseDown, AddressOf lbl_MouseDown
             AddHandler cible.MouseRightButtonDown, AddressOf lbl_clear
             active_drag(numéro)
@@ -518,7 +512,7 @@ Class MainWindow
         Next i
     End Sub
 
-    Private Sub Window1_Closing(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles Me.Closing
+    Private Sub Window1_Closing(ByVal sender As Object, ByVal e As ComponentModel.CancelEventArgs) Handles Me.Closing
         Dim result As MessageBoxResult = MessageBox.Show("Voulez-vous quitter le jeu ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question)
 
         If result = MessageBoxResult.Yes Then
@@ -531,7 +525,6 @@ Class MainWindow
     Private Sub Souris(sender As Object, e As MouseEventArgs)
 
         For i As Int32 = 0 To Cibles.Children.Count - 1
-            Dim cible As Label = CType(Cibles.Children.Item(i), Label)
             Dim source As Label = CType(Sources.Children.Item(i), Label)
             Dim numéro As Label = CType(Numéros.Children.Item(i), Label)
             If numéro.IsMouseOver = True And numéro.Foreground.ToString = "#FFFF0000" Then
@@ -549,7 +542,6 @@ Class MainWindow
     Private Sub plus_souris(sender As Object, e As MouseEventArgs)
 
         For i As Int32 = 0 To Cibles.Children.Count - 1
-            Dim cible As Label = CType(Cibles.Children.Item(i), Label)
             Dim source As Label = CType(Sources.Children.Item(i), Label)
             Dim numéro As Label = CType(Numéros.Children.Item(i), Label)
             If numéro.IsMouseOver = False And (Equals(numéro.Foreground, Brushes.Red)) Then
