@@ -291,7 +291,7 @@ Class MainWindow
 
     End Sub
 
-    Private Sub vérifier_Click(sender As Object, e As RoutedEventArgs) Handles vérifier.Click
+    Private Sub Vérifier_Click(sender As Object, e As RoutedEventArgs) Handles vérifier.Click
 
         Dim b As Integer = 0
         Dim m As Integer = 0
@@ -337,31 +337,31 @@ Class MainWindow
 
         Test_réponse()
 
-        If temp <> b Then
-            total = (b - temp) * 2
+        If Temp <> b Then
+            total = (b - Temp) * 2
         Else
             total = 0
         End If
-        score = score + Val(total) - m
-        temp = b
-        coups1 = coups1 + 1
-        Coups.Content = "Coups : " & coups1
+        Score = Score + Val(total) - m
+        Temp = b
+        Coups1 = Coups1 + 1
+        Coups.Content = "Coups : " & Coups1
 
         Points.Foreground = Brushes.SaddleBrown
         Points.HorizontalContentAlignment = HorizontalAlignment.Center
         Points.VerticalContentAlignment = VerticalAlignment.Top
-        Points.Content = score
+        Points.Content = Score
         'My.Computer.Audio.Play(My.Resources.Bruit, AudioPlayMode.Background)
 
         Test_réponse()
 
-        p = 0
-        En_cours.Content = "Eléments non vérifiés : " & p.ToString
+        P = 0
+        En_cours.Content = "Eléments non vérifiés : " & P.ToString
         'Cacher_Checked(sender, e)
         'Voir_Checked(sender, e)
 
-        If b = 60 And triche = 0 Then
-            Dim result As MessageBoxResult = MessageBox.Show("Bravo " & copie.Content & " !" & Chr(10) & "Tu as placé les 60 Eléments en " & coups1 & " coups." & Chr(10) & "Tu as totalisé " & score & " points." & Chr(10) & "Veux-tu refaire une partie ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question)
+        If b = 60 And Triche = 0 Then
+            Dim result As MessageBoxResult = MessageBox.Show("Bravo " & copie.Content & " !" & Chr(10) & "Tu as placé les 60 Eléments en " & Coups1 & " coups." & Chr(10) & "Tu as totalisé " & Score & " points." & Chr(10) & "Veux-tu refaire une partie ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question)
             If result = MessageBoxResult.Yes Then
                 fichier_Scores()
                 Effacer_Click(sender, e)
